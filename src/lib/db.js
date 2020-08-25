@@ -22,7 +22,7 @@ async function validateShortUrl (shortUrl) {
 async function saveHits (id, req) {
   const remoteIp = await publicIp.v4()
   const geo = await geoip.lookup(remoteIp)
-
+  console.log(req.header('X-Forwarded-For'))
   const httpReferer = req.get('Referrer') || ''
   const countryCode = geo === null ? '' : geo.country
   const regionCode = geo === null ? '' : geo.region
