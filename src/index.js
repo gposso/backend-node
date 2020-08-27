@@ -19,7 +19,8 @@ app.get(/^\/[a-z]+$/i, async function (req, res) {
     res.redirect('/')
   } else {
     saveHits(longUrl.id, req)
-    res.redirect(longUrl.long_url)
+    // res.redirect(longUrl.long_url)
+    res.send(req.headers)
   }
 })
 

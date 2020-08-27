@@ -19,7 +19,7 @@ async function validateShortUrl (shortUrl) {
 }
 
 async function saveHits (id, req) {
-  const remoteIp = req.header('X-Forwarded-For')
+  const remoteIp = req.header('X-Forwarded-For') || req.connection.remoteAddress
   const geo = await geoip.lookup(remoteIp)
 
   const httpReferer = req.get('Referrer') || ''
